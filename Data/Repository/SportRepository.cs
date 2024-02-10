@@ -26,7 +26,7 @@ namespace ITC2Wedstrijd.Data
 
         public bool VerwijderenSport(int id)
         {
-                string sql = @"DELETE FROM Sporten WHERE SportId = @id";
+                string sql = @"DELETE FROM Sporten WHERE Id = @id";
 
                  using IDbConnection db = new SqlConnection(ConnectionString);
                  var affectedRows = db.Execute(sql, new { id });
@@ -37,7 +37,7 @@ namespace ITC2Wedstrijd.Data
         public bool WijzigenSport(Sport sport)
         {
                string sql = @"UPDATE Sporten
-                              SET naam = '" + sport.Naam + "' WHERE Sportid = " + @sport.SportId;
+                              SET naam = '" + sport.Naam + "' WHERE id = " + @sport.Id;
 
                using IDbConnection db = new SqlConnection(ConnectionString);
                var affectedRows = db.Execute(sql);

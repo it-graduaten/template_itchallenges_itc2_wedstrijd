@@ -12,7 +12,7 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Ploeg">
                     <VerticalStackLayout Padding="5">
-                        <Label FontSize="14" Text="{Binding PloegNaam}"/>
+                        <Label FontSize="14" Text="{Binding Naam}"/>
                     </VerticalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
@@ -24,7 +24,7 @@
         <VerticalStackLayout Grid.Row="0" Grid.Column="1" Spacing="10">
             <Label Text="{Binding ActieLabel}" FontSize="Header"/>
             <Label Text="Naam" />
-            <Entry Placeholder="Naam" Text="{Binding SelectedPloeg.PloegNaam}" />
+            <Entry Placeholder="Naam" Text="{Binding SelectedPloeg.Naam}" />
             <Label Text="Kies een categorie" />
             <Label Text="{Binding SelectedPloeg.Categorie.Naam}"/>
             <Picker x:Name="PickerCategoriën" ItemsSource="{Binding Categoriën}" SelectedItem="{Binding SelectedPloeg.Categorie, Mode=TwoWay}"  ItemDisplayBinding="{Binding Naam}"/>

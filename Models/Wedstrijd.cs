@@ -3,7 +3,7 @@ namespace ITC2Wedstrijd.Models
 {
     public class Wedstrijd
     {
-        public int WedstrijdId { get; set; }
+        public int Id { get; set; }
         public int PloegId1 { get; set; }
         public int PloegId2 { get; set; }
         public Ploeg Ploeg { get; set;}

@@ -3,7 +3,7 @@ namespace ITC2Wedstrijd.Models
 {
     public class Speler
     {
-        public int SpelerId { get; set; }
+        public int Id { get; set; }
         public string Voornaam { get; set; }
         public string Naam {  get; set; }
         public string Straat {  get; set; }

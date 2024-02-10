@@ -42,8 +42,9 @@
             <Label Text="Land" />
             <Entry Placeholder="Land" Text="{Binding SelectedSpeler.Land}" />
             <Label Text="Geboortedatum" />
-            <DatePicker Date="{Binding SelectedSpeler.Geboortedatum}"/>
-            <Label Text="Kies een geslacht" />
+            <DatePicker Date="{Binding SelectedSpeler.Geboortedatum}" Format="dd/mm/yyyy"/>
+                <Label Text="Kies een geslacht" />
+                <Label Text="{Binding SelectedSpeler.Geslacht}" />
             <Picker ItemsSource="{Binding Geslacht}" SelectedItem="{Binding SelectedSpeler.Geslacht}"  />
 
             <HorizontalStackLayout Spacing="10">

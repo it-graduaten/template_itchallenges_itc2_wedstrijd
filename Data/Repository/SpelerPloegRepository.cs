@@ -14,7 +14,7 @@ namespace ITC2Wedstrijd.Data
 
             var parameters = new
             {
-                ploegid = ploeg.PloegId,
+                ploegid = ploeg.Id,
                 minleeftijd = ploeg.Categorie.MinLeeftijd,
                 maxleeftijd = ploeg.Categorie.MaxLeeftijd
             };
@@ -38,7 +38,7 @@ namespace ITC2Wedstrijd.Data
 
             var parameters = new
             {
-                ploegid = ploeg.PloegId,
+                ploegid = ploeg.Id,
                 minleeftijd = ploeg.Categorie.MinLeeftijd,
                 maxleeftijd = ploeg.Categorie.MaxLeeftijd
             };
@@ -58,8 +58,8 @@ namespace ITC2Wedstrijd.Data
 
             var parameters = new
             {
-                spelerid = speler.SpelerId,
-                ploegid = ploeg.PloegId
+                spelerid = speler.Id,
+                ploegid = ploeg.Id
             };
 
             using IDbConnection db = new SqlConnection(ConnectionString);
@@ -74,7 +74,7 @@ namespace ITC2Wedstrijd.Data
                            AND ploegid=@ploegid";
 
             using IDbConnection db = new SqlConnection(ConnectionString);
-            var affectedRows = db.Execute(sql, new { spelerid=speler.SpelerId,ploegid=ploeg.PloegId });
+            var affectedRows = db.Execute(sql, new { spelerid=speler.Id,ploegid=ploeg.Id });
 
             return affectedRows == 1;
         }

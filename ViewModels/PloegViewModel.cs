@@ -75,7 +75,7 @@
         [RelayCommand]
         public void Verwijderen()
         {
-            var result = _ploegRepository.VerwijderenPloeg(SelectedPloeg.PloegId);
+            var result = _ploegRepository.VerwijderenPloeg(SelectedPloeg.Id);
 
             if (result)
             {
@@ -97,7 +97,7 @@
         [RelayCommand]
         public async Task GoToToewijzen()
         {
-            if (SelectedPloeg.PloegId == 0)
+            if (SelectedPloeg.Id == 0)
             {
                 await Shell.Current.DisplayAlert("Fout", "Je moet eerst een ploeg selecteren!", "OK");
             }
@@ -110,11 +110,11 @@
             }
         }
 
-        private partial void OnSelectedPloegChanged(Ploeg value)
+        partial void OnSelectedPloegChanged(Ploeg value)
         {
             if (value == null) return;
 
-            if (value.PloegId == 0)
+            if (value.Id == 0)
             {
                 ActieLabel = "Nieuwe ploeg toevoegen";
             }

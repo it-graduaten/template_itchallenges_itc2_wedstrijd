@@ -41,7 +41,7 @@ namespace ITC2Wedstrijd.Data
         public bool VerwijderenSpeler(int id)
         {
                 string sql = @"DELETE FROM spelersploegen WHERE spelerid = @id;
-                                DELETE FROM spelers WHERE spelerid = @id";
+                                DELETE FROM spelers WHERE id = @id";
 
                  using IDbConnection db = new SqlConnection(ConnectionString);
                  var affectedRows = db.Execute(sql, new { id });
@@ -61,11 +61,11 @@ namespace ITC2Wedstrijd.Data
                             land = @land,
                             geboortedatum = @geboortedatum,
                             geslacht = geslacht
-                        WHERE spelerid = @spelerid";
+                        WHERE id = @spelerid";
 
             var parameters = new
             {
-                spelerid = speler.SpelerId,
+                spelerid = speler.Id,
                 voornaam = speler.Voornaam,
                 naam = speler.Naam,
                 straat = speler.Straat,

@@ -26,7 +26,7 @@ namespace ITC2Wedstrijd.Data
                    naam = categorie.Naam,
                    minleeftijd = categorie.MinLeeftijd,
                    maxleeftijd = categorie.MaxLeeftijd,
-                   geslacht = categorie.CategorieType
+                   categorietype = categorie.CategorieType
                };
 
                using IDbConnection db = new SqlConnection(ConnectionString);
@@ -37,7 +37,7 @@ namespace ITC2Wedstrijd.Data
 
         public bool VerwijderenCategorie(int id)
         {
-                string sql = @"DELETE FROM categoriën WHERE CategorieId = @id";
+                string sql = @"DELETE FROM categoriën WHERE Id = @id";
 
                  using IDbConnection db = new SqlConnection(ConnectionString);
                  var affectedRows = db.Execute(sql, new { id });
@@ -53,11 +53,11 @@ namespace ITC2Wedstrijd.Data
                                   minleeftijd = @minleeftijd,
                                   maxleeftijd = @maxleeftijd,
                                   categorietype = @categorietype
-                              WHERE categorieid = @categorieid";
+                              WHERE id = @id";
 
                var parameters = new
                {
-                   categorieid = categorie.CategorieId,
+                   id = categorie.Id,
                    naam = categorie.Naam,
                    minleeftijd = categorie.MinLeeftijd,
                    maxleeftijd = categorie.MaxLeeftijd,

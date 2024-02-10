@@ -28,7 +28,7 @@ namespace ITC2Wedstrijd.ViewModels
 
         partial void OnSelectedSpelerChanged(Speler value)
         {
-            if (value.SpelerId == 0)
+            if (value.Id == 0)
             {
                 ActieLabel = "Nieuwe speler toevoegen";
             }
@@ -47,7 +47,7 @@ namespace ITC2Wedstrijd.ViewModels
         [RelayCommand]
         public void Toevoegen()
         {
-            var result = _spelerRepository.ToevoegenSpeler(selectedSpeler);
+            var result = _spelerRepository.ToevoegenSpeler(SelectedSpeler);
 
             if (result)
             {
@@ -64,7 +64,7 @@ namespace ITC2Wedstrijd.ViewModels
         [RelayCommand]
         public void Wijzigen()
         {
-            var result = _spelerRepository.WijzigenSpeler(selectedSpeler);
+            var result = _spelerRepository.WijzigenSpeler(SelectedSpeler);
 
             if (result)
             {
@@ -81,7 +81,7 @@ namespace ITC2Wedstrijd.ViewModels
         [RelayCommand]
         public void Verwijderen()
         {
-            var result = _spelerRepository.VerwijderenSpeler(SelectedSpeler.SpelerId);
+            var result = _spelerRepository.VerwijderenSpeler(SelectedSpeler.Id);
 
             if (result)
             {

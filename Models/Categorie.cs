@@ -5,7 +5,7 @@ namespace ITC2Wedstrijd.Models
 {
     public class Categorie
     {
-        public int CategorieId { get; set; }
+        public int Id { get; set; }
         public string Naam {  get; set; }
         public int MinLeeftijd { get; set; }
         public int MaxLeeftijd { get; set; }
@@ -18,7 +18,7 @@ namespace ITC2Wedstrijd.Models
 
         public override bool Equals(object obj)
         {
-            return obj is Categorie categorie && CategorieId == categorie.CategorieId;
+            return obj is Categorie categorie && Id == categorie.Id;
         }
 
     }

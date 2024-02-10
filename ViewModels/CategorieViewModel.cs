@@ -32,7 +32,7 @@ namespace ITC2Wedstrijd.ViewModels
 
         partial void OnSelectedCategorieChanged(Categorie value)
         {
-            if (value.CategorieId == 0)
+            if (value.Id == 0)
             {
                 ActieLabel = "Nieuwe categorie toevoegen";
             }
@@ -85,7 +85,7 @@ namespace ITC2Wedstrijd.ViewModels
         [RelayCommand]
         public void Verwijderen()
         {
-            var result = _categorieRepository.VerwijderenCategorie(SelectedCategorie.CategorieId);
+            var result = _categorieRepository.VerwijderenCategorie(SelectedCategorie.Id);
 
             if (result)
             {

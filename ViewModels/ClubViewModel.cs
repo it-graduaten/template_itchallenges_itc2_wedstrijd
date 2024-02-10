@@ -23,7 +23,7 @@ namespace ITC2Wedstrijd.ViewModels
 
         partial void OnSelectedClubChanged(Club value)
         {
-            if (value.ClubId == 0)
+            if (value.Id == 0)
             {
                 ActieLabel = "Nieuwe club toevoegen";
             }
@@ -76,7 +76,7 @@ namespace ITC2Wedstrijd.ViewModels
         [RelayCommand]
         public void Verwijderen()
         {
-            var result = _clubRepository.VerwijderenClub(SelectedClub.ClubId);
+            var result = _clubRepository.VerwijderenClub(SelectedClub.Id);
 
             if (result)
             {

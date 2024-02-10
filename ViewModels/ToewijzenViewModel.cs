@@ -26,7 +26,7 @@ namespace ITC2Wedstrijd.ViewModels
 
         partial void OnPloegChanged(Ploeg value)
         {
-            Title = "Spelers toewijzen aan " + value.PloegNaam;
+            Title = "Spelers toewijzen aan " + value.Naam;
             BeschikbareSpelersOphalen();
             SpelersInPloegOphalen();
         }

@@ -9,10 +9,10 @@ namespace ITC2Wedstrijd.Data
             // Eerst categorie, dan club en dan sport
             string sql = @"SELECT P.*, C.*, CL.*, S.* 
                             FROM ploegen P
-                            INNER JOIN categoriën C ON P.categorieid = C.categorieid
-                            INNER JOIN clubs CL ON P.clubid = CL.clubid
-                            INNER JOIN sporten S ON P.sportid = S.sportid
-                            Order by ploegnaam";
+                            INNER JOIN categoriën C ON P.categorieid = C.id
+                            INNER JOIN clubs CL ON P.clubid = CL.id
+                            INNER JOIN sporten S ON P.sportid = S.id
+                            Order by P.naam";
 
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {
@@ -26,7 +26,7 @@ namespace ITC2Wedstrijd.Data
                     Ploeg.Sport = Sport;
                     return Ploeg;
                // Eerst categorieid, dan clubid en dan sportid
-                }, splitOn: "categorieId,clubid,sportid");
+                }, splitOn: "id");
                 // De debugVar is enkel toegevoegd om een breakpunt te kunnen zetten
                 // en de inhoud van de variabele te kunnen bekijken.
                 return debugVar;
@@ -36,15 +36,15 @@ namespace ITC2Wedstrijd.Data
 
         public bool ToevoegenPloeg(Ploeg ploeg)
         {
-               string sql = @"INSERT INTO ploegen (ploegnaam, categorieid, clubid, sportid)
-                  VALUES (@ploegnaam, @categorieid, @clubid, @sportid)";
+               string sql = @"INSERT INTO ploegen (naam, categorieid, clubid, sportid)
+                  VALUES (@naam, @categorieid, @clubid, @sportid)";
 
                var parameters = new
                {
-                   ploegnaam = ploeg.PloegNaam,
-                   categorieid = ploeg.Categorie.CategorieId,
-                   clubid = ploeg.Club.ClubId,
-                   sportid = ploeg.Sport.SportId
+                   naam = ploeg.Naam,
+                   categorieid = ploeg.Categorie.Id,
+                   clubid = ploeg.Club.Id,
+                   sportid = ploeg.Sport.Id
                };
 
                using IDbConnection db = new SqlConnection(ConnectionString);
@@ -56,7 +56,7 @@ namespace ITC2Wedstrijd.Data
         public bool VerwijderenPloeg(int id)
         {
                 string sql = @"DELETE FROM spelersploegen WHERE ploegid = @id;
-                                DELETE FROM ploegen WHERE ploegid = @id";
+                                DELETE FROM ploegen WHERE id = @id";
 
                  using IDbConnection db = new SqlConnection(ConnectionString);
                  var affectedRows = db.Execute(sql, new { id });
@@ -68,16 +68,16 @@ namespace ITC2Wedstrijd.Data
         public bool WijzigenPloeg(Ploeg ploeg)
         {
                string sql = @"UPDATE ploegen
-                              SET ploegnaam = @ploegnaam,
+                              SET naam = @naam,
                                   categorieid = @categorieid,
                                   clubid = @clubid,
                                   sportid = @sportid
-                              WHERE ploegid = @ploegid";
+                              WHERE id = @id";
 
                var parameters = new
                {
-                   ploegid = ploeg.PloegId,
-                   ploegnaam = ploeg.PloegNaam,
+                   id = ploeg.Id,
+                   naam = ploeg.Naam,
                    categorieid = ploeg.CategorieId,
                    clubid = ploeg.ClubId,
                    sportid = ploeg.SportId

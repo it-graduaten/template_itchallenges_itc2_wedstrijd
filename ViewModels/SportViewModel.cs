@@ -23,7 +23,7 @@ namespace ITC2Wedstrijd.ViewModels
 
         partial void OnSelectedSportChanged(Sport value)
         {
-            if (value.SportId == 0)
+            if (value.Id == 0)
             {
                 ActieLabel = "Nieuwe sport toevoegen";
             }
@@ -76,7 +76,7 @@ namespace ITC2Wedstrijd.ViewModels
         [RelayCommand]
         public void Verwijderen()
         {
-            var result = _sportRepository.VerwijderenSport(SelectedSport.SportId);
+            var result = _sportRepository.VerwijderenSport(SelectedSport.Id);
 
             if (result)
             {
