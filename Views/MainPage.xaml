@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:ITC2Wedstrijd.ViewModels"
+             x:DataType="viewmodel:BaseViewModel"
+             x:Class="ITC2Wedstrijd.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+
+            <Label
+                Text="Sportwedstrijden Management Systeem"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+
+            <Grid RowDefinitions="*,*" ColumnDefinitions="*,*,*" >
+                <Button Text="Wedstrijden" Grid.Row="0" Grid.Column="0" Margin="50"/>
+                <Button Text="Spelers" Grid.Row="0" Grid.Column="1"  Command="{Binding GoToSpelersCommand}" Margin="50"/>
+                <Button Text="Ploegen" Grid.Row="0" Grid.Column="2"  Command="{Binding GoToPloegenCommand}" Margin="50"/>
+                <Button Text="Clubs" Grid.Row="1" Grid.Column="0"  Command="{Binding GoToClubsCommand}" Margin="50"/>
+                <Button Text="Categoriën" Grid.Row="1" Grid.Column="1"  Command="{Binding GoToCategoriënCommand}" Margin="50"/>
+                <Button Text="Sport" Grid.Row="1" Grid.Column="2"  Command="{Binding GoToSportenCommand}" Margin="50"/>
+            </Grid>               
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
