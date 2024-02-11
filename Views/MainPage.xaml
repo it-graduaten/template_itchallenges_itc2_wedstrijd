@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:ITC2Wedstrijd.ViewModels"
              x:DataType="viewmodel:BaseViewModel"
-             x:Class="ITC2Wedstrijd.MainPage">
+             x:Class="ITC2Wedstrijd.Views.MainPage">
 
     <ScrollView>
         <VerticalStackLayout

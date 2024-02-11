@@ -3,25 +3,22 @@
     x:Class="ITC2Wedstrijd.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:ITC2Wedstrijd"
     xmlns:views="clr-namespace:ITC2Wedstrijd.Views"
-    Shell.FlyoutBehavior="Flyout"
+    FlyoutBehavior="Locked"
+    FlyoutWidth="200"
     Title="ITC2Wedstrijd">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-
+    <ShellContent Title="Home" 
+                    ContentTemplate="{DataTemplate views:MainPage}"/>
     <ShellContent Title="Categoriën"
-                        ContentTemplate="{DataTemplate views:CategoriePage}" />
+                    ContentTemplate="{DataTemplate views:CategoriePage}" />
     <ShellContent Title="Clubs"
-                        ContentTemplate="{DataTemplate views:ClubPage}" />
+                    ContentTemplate="{DataTemplate views:ClubPage}" />
     <ShellContent Title="Sporten"
-                        ContentTemplate="{DataTemplate views:SportPage}" />
+                    ContentTemplate="{DataTemplate views:SportPage}" />
     <ShellContent Title="Spelers"
-                        ContentTemplate="{DataTemplate views:SpelerPage}" />
+                    ContentTemplate="{DataTemplate views:SpelerPage}" />
     <ShellContent Title="Ploegen"
-                        ContentTemplate="{DataTemplate views:PloegPage}" />
+                    ContentTemplate="{DataTemplate views:PloegPage}" />
 
 </Shell>

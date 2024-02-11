@@ -1,4 +1,4 @@
-﻿namespace ITC2Wedstrijd
+﻿namespace ITC2Wedstrijd.Views
 {
     public partial class MainPage : ContentPage
     {

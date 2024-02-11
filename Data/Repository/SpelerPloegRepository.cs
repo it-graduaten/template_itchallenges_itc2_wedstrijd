@@ -9,7 +9,7 @@ namespace ITC2Wedstrijd.Data
                     FROM spelers
                     WHERE Year(geboortedatum) <= (year(GETDATE())-@minleeftijd)
                         AND Year(geboortedatum) >= (year(GETDATE())-@maxleeftijd)
-                        AND spelerid NOT IN (SELECT spelerid FROM spelersploegen SP WHERE SP.ploegid = @ploegid)
+                        AND id NOT IN (SELECT spelerid FROM spelersploegen SP WHERE SP.ploegid = @ploegid)
                     Order by naam, voornaam";
 
             var parameters = new
@@ -33,7 +33,7 @@ namespace ITC2Wedstrijd.Data
                     FROM spelers
                     WHERE Year(geboortedatum) <= (year(GETDATE())-@minleeftijd)
                         AND Year(geboortedatum) >= (year(GETDATE())-@maxleeftijd)
-                        AND spelerid IN (SELECT spelerid FROM spelersploegen SP WHERE SP.ploegid = @ploegid)
+                        AND id IN (SELECT spelerid FROM spelersploegen SP WHERE SP.ploegid = @ploegid)
                     Order by naam, voornaam";
 
             var parameters = new
