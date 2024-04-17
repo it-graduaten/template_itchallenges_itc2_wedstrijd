@@ -10,11 +10,14 @@ GO
 SET NOCOUNT ON;
 GO
 
+drop table if exists spelersploegen;
+drop table if exists wedstrijden;
 drop table if exists ploegen;
 drop table if exists categoriën;
 drop table if exists clubs;
 drop table if exists sporten;
 drop table if exists spelers;
+
 GO
 
 create table spelers (
