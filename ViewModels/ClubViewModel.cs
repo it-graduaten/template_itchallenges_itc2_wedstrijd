@@ -4,7 +4,7 @@ namespace ITC2Wedstrijd.ViewModels
     public partial class ClubViewModel : BaseViewModel
     {
         [ObservableProperty]
-        public ObservableCollection<Club> clubs;
+        public ObservableCollection<Club> Club;
 
         private IClubRepository _clubRepository;
 
@@ -13,9 +13,9 @@ namespace ITC2Wedstrijd.ViewModels
         public ClubViewModel(ClubRepository clubRepository)
         {
             _clubRepository = clubRepository;
-            RefreshClubs();
+            RefreshClub();
             SelectedClub = new Club();
-            Title = "Clubs";
+            Title = "Club";
         }
 
         [ObservableProperty]
@@ -34,9 +34,9 @@ namespace ITC2Wedstrijd.ViewModels
         }
 
 
-        private void RefreshClubs()
+        private void RefreshClub()
         {
-            Clubs = new ObservableCollection<Club>(_clubRepository.ClubOphalen());
+            Club = new ObservableCollection<Club>(_clubRepository.ClubOphalen());
         }
 
         [RelayCommand]
@@ -46,7 +46,7 @@ namespace ITC2Wedstrijd.ViewModels
 
             if (result)
             {
-                RefreshClubs();
+                RefreshClub();
                 SelectedClub = new Club();
             }
             else
@@ -63,7 +63,7 @@ namespace ITC2Wedstrijd.ViewModels
 
             if (result)
             {
-                RefreshClubs();
+                RefreshClub();
                 SelectedClub = new Club();
             }
             else
@@ -80,7 +80,7 @@ namespace ITC2Wedstrijd.ViewModels
 
             if (result)
             {
-                RefreshClubs();
+                RefreshClub();
                 SelectedClub = new Club();
             }
             else

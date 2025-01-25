@@ -8,7 +8,7 @@
              Title="{Binding Title}">
 
     <Grid RowDefinitions="*" ColumnDefinitions="*, *">
-        <CollectionView Grid.Row="0" Grid.Column="0" SelectionMode="Single" ItemsSource="{Binding Categoriën}" EmptyView="No items to display" SelectedItem="{Binding SelectedCategorie}">
+        <CollectionView Grid.Row="0" Grid.Column="0" SelectionMode="Single" ItemsSource="{Binding Categorie}" EmptyView="No items to display" SelectedItem="{Binding SelectedCategorie}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Categorie">
                     <VerticalStackLayout Padding="5">

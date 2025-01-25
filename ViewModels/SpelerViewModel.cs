@@ -5,7 +5,7 @@ namespace ITC2Wedstrijd.ViewModels
     public partial class SpelerViewModel : BaseViewModel
     {
         [ObservableProperty]
-        public ObservableCollection<Speler> spelers;
+        public ObservableCollection<Speler> Speler;
 
         private SpelerRepository _spelerRepository;
 
@@ -17,10 +17,10 @@ namespace ITC2Wedstrijd.ViewModels
         public SpelerViewModel(SpelerRepository spelerRepository)
         {
             _spelerRepository = spelerRepository;
-            RefreshCategoriën();
+            RefreshCategorie();
             Geslacht = typeof(Geslacht).GetEnumValues();
             selectedSpeler = new Speler();
-            Title = "Spelers";
+            Title = "Speler";
         }
 
         [ObservableProperty]
@@ -39,9 +39,9 @@ namespace ITC2Wedstrijd.ViewModels
         }
 
 
-        private void RefreshCategoriën()
+        private void RefreshCategorie()
         {
-            Spelers = new ObservableCollection<Speler>(_spelerRepository.SpelerOphalen());
+            Speler = new ObservableCollection<Speler>(_spelerRepository.SpelerOphalen());
         }
 
         [RelayCommand]
@@ -51,7 +51,7 @@ namespace ITC2Wedstrijd.ViewModels
 
             if (result)
             {
-                RefreshCategoriën();
+                RefreshCategorie();
                 SelectedSpeler = new Speler();
             }
             else
@@ -68,7 +68,7 @@ namespace ITC2Wedstrijd.ViewModels
 
             if (result)
             {
-                RefreshCategoriën();
+                RefreshCategorie();
                 SelectedSpeler = new Speler();
             }
             else
@@ -85,7 +85,7 @@ namespace ITC2Wedstrijd.ViewModels
 
             if (result)
             {
-                RefreshCategoriën();
+                RefreshCategorie();
                 SelectedSpeler = new Speler();
             }
             else

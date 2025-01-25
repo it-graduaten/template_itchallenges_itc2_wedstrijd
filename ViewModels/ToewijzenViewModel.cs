@@ -9,11 +9,11 @@ namespace ITC2Wedstrijd.ViewModels
         Ploeg ploeg;
 
         [ObservableProperty]
-        public ObservableCollection<Speler> beschikbareSpelers;
+        public ObservableCollection<Speler> beschikbareSpeler;
 
 
         [ObservableProperty]
-        public ObservableCollection<Speler> spelersInPloeg;
+        public ObservableCollection<Speler> SpelerInPloeg;
 
         private SpelerPloegRepository _spelerPloegRepository;
 
@@ -26,9 +26,9 @@ namespace ITC2Wedstrijd.ViewModels
 
         partial void OnPloegChanged(Ploeg value)
         {
-            Title = "Spelers toewijzen aan " + value.Naam;
-            BeschikbareSpelersOphalen();
-            SpelersInPloegOphalen();
+            Title = "Speler toewijzen aan " + value.Naam;
+            BeschikbareSpelerOphalen();
+            SpelerInPloegOphalen();
         }
 
         [RelayCommand]
@@ -37,13 +37,13 @@ namespace ITC2Wedstrijd.ViewModels
             ItemBeingDragged = speler;
         }
 
-        public void BeschikbareSpelersOphalen()
+        public void BeschikbareSpelerOphalen()
         {
-            BeschikbareSpelers = new ObservableCollection<Speler>(_spelerPloegRepository.BeschikbareSpelersOphalen(Ploeg));
+            BeschikbareSpeler = new ObservableCollection<Speler>(_spelerPloegRepository.BeschikbareSpelerOphalen(Ploeg));
         }
-        public void SpelersInPloegOphalen()
+        public void SpelerInPloegOphalen()
         {
-            SpelersInPloeg = new ObservableCollection<Speler>(_spelerPloegRepository.SpelersInPloegOphalen(Ploeg));
+            SpelerInPloeg = new ObservableCollection<Speler>(_spelerPloegRepository.SpelerInPloegOphalen(Ploeg));
         }
 
         [RelayCommand]
@@ -53,8 +53,8 @@ namespace ITC2Wedstrijd.ViewModels
 
             if (result)
             {
-                BeschikbareSpelersOphalen();
-                SpelersInPloegOphalen();
+                BeschikbareSpelerOphalen();
+                SpelerInPloegOphalen();
             }
             else
             {
@@ -69,8 +69,8 @@ namespace ITC2Wedstrijd.ViewModels
 
             if (result)
             {
-                BeschikbareSpelersOphalen();
-                SpelersInPloegOphalen();
+                BeschikbareSpelerOphalen();
+                SpelerInPloegOphalen();
             }
             else
             {

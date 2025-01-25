@@ -5,18 +5,18 @@ namespace ITC2Wedstrijd.Data
     {
         public IEnumerable<Sport> SportOphalen()
         {
-            string sql = @"SELECT * FROM Sporten Order By naam";
+            string sql = @"SELECT * FROM Sport Order By naam";
 
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {
-                var sporten = db.Query<Sport>(sql).ToList();
-                return sporten;
+                var Sport = db.Query<Sport>(sql).ToList();
+                return Sport;
             }
         }
 
         public bool ToevoegenSport(Sport sport)
         {
-               string sql = @"INSERT INTO Sporten (naam) VALUES ('" + sport.Naam + "')";
+               string sql = @"INSERT INTO Sport (naam) VALUES ('" + sport.Naam + "')";
 
                using IDbConnection db = new SqlConnection(ConnectionString);
                var affectedRows = db.Execute(sql);
@@ -26,7 +26,7 @@ namespace ITC2Wedstrijd.Data
 
         public bool VerwijderenSport(int id)
         {
-                string sql = @"DELETE FROM Sporten WHERE Id = @id";
+                string sql = @"DELETE FROM Sport WHERE Id = @id";
 
                  using IDbConnection db = new SqlConnection(ConnectionString);
                  var affectedRows = db.Execute(sql, new { id });
@@ -36,7 +36,7 @@ namespace ITC2Wedstrijd.Data
 
         public bool WijzigenSport(Sport sport)
         {
-               string sql = @"UPDATE Sporten
+               string sql = @"UPDATE Sport
                               SET naam = '" + sport.Naam + "' WHERE id = " + @sport.Id;
 
                using IDbConnection db = new SqlConnection(ConnectionString);

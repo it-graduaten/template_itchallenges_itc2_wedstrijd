@@ -10,15 +10,15 @@
 
     <ShellContent Title="Home" 
                     ContentTemplate="{DataTemplate views:MainPage}"/>
-    <ShellContent Title="Categoriën"
+    <ShellContent Title="Categorie"
                     ContentTemplate="{DataTemplate views:CategoriePage}" />
-    <ShellContent Title="Clubs"
+    <ShellContent Title="Club"
                     ContentTemplate="{DataTemplate views:ClubPage}" />
-    <ShellContent Title="Sporten"
+    <ShellContent Title="Sport"
                     ContentTemplate="{DataTemplate views:SportPage}" />
-    <ShellContent Title="Spelers"
+    <ShellContent Title="Speler"
                     ContentTemplate="{DataTemplate views:SpelerPage}" />
-    <ShellContent Title="Ploegen"
+    <ShellContent Title="Ploeg"
                     ContentTemplate="{DataTemplate views:PloegPage}" />
 
 </Shell>

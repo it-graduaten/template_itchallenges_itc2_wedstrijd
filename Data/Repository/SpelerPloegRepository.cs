@@ -3,13 +3,13 @@ namespace ITC2Wedstrijd.Data
 {
     public class SpelerPloegRepository: BaseRepository, ISpelerPloegRepository
     {
-        public IEnumerable<Speler> BeschikbareSpelersOphalen(Ploeg ploeg)
+        public IEnumerable<Speler> BeschikbareSpelerOphalen(Ploeg ploeg)
         {
             string sql = @"SELECT *
-                    FROM spelers
+                    FROM Speler
                     WHERE Year(geboortedatum) <= (year(GETDATE())-@minleeftijd)
                         AND Year(geboortedatum) >= (year(GETDATE())-@maxleeftijd)
-                        AND id NOT IN (SELECT spelerid FROM spelersploegen SP WHERE SP.ploegid = @ploegid)
+                        AND id NOT IN (SELECT spelerid FROM SpelerPloeg SP WHERE SP.ploegid = @ploegid)
                     Order by naam, voornaam";
 
             var parameters = new
@@ -21,19 +21,19 @@ namespace ITC2Wedstrijd.Data
 
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {
-                var spelers = db.Query<Speler>(sql, parameters);
-                return spelers;
+                var Speler = db.Query<Speler>(sql, parameters);
+                return Speler;
 
             }
         }
 
-        public IEnumerable<Speler> SpelersInPloegOphalen(Ploeg ploeg)
+        public IEnumerable<Speler> SpelerInPloegOphalen(Ploeg ploeg)
         {
             string sql = @"SELECT *
-                    FROM spelers
+                    FROM Speler
                     WHERE Year(geboortedatum) <= (year(GETDATE())-@minleeftijd)
                         AND Year(geboortedatum) >= (year(GETDATE())-@maxleeftijd)
-                        AND id IN (SELECT spelerid FROM spelersploegen SP WHERE SP.ploegid = @ploegid)
+                        AND id IN (SELECT spelerid FROM SpelerPloeg SP WHERE SP.ploegid = @ploegid)
                     Order by naam, voornaam";
 
             var parameters = new
@@ -45,15 +45,15 @@ namespace ITC2Wedstrijd.Data
 
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {
-                var spelers = db.Query<Speler>(sql, parameters);
-                return spelers;
+                var Speler = db.Query<Speler>(sql, parameters);
+                return Speler;
 
             }
         }
 
         public bool SpelerInPloegPlaatsen(Speler speler, Ploeg ploeg)
         {
-            string sql = @"INSERT INTO spelersploegen (spelerid, ploegid)
+            string sql = @"INSERT INTO SpelerPloeg (spelerid, ploegid)
                   VALUES (@spelerid, @ploegid)";
 
             var parameters = new
@@ -70,7 +70,7 @@ namespace ITC2Wedstrijd.Data
 
         public bool SpelerUitPloegHalen(Speler speler, Ploeg ploeg)
         {
-            string sql = @"DELETE FROM spelersploegen WHERE spelerid=@spelerid
+            string sql = @"DELETE FROM SpelerPloeg WHERE spelerid=@spelerid
                            AND ploegid=@ploegid";
 
             using IDbConnection db = new SqlConnection(ConnectionString);

@@ -12,5 +12,6 @@ namespace ITC2Wedstrijd.Models
         public int SportId {  get; set; }
         public Sport Sport { get; set; }
 
+
     }
 }

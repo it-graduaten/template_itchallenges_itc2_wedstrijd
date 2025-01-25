@@ -9,7 +9,7 @@ namespace ITC2Wedstrijd.ViewModels
     public partial class CategorieViewModel : BaseViewModel
     {
         [ObservableProperty]
-        public ObservableCollection<Categorie> categoriën;
+        public ObservableCollection<Categorie> Categorie;
 
         private ICategorieRepository _categorieRepository;
 
@@ -21,10 +21,10 @@ namespace ITC2Wedstrijd.ViewModels
         public CategorieViewModel(CategorieRepository categorieRepository)
         {
             _categorieRepository = categorieRepository;
-            RefreshCategoriën();
+            RefreshCategorie();
             CategorieType = typeof(CategorieType).GetEnumValues();
             selectedCategorie = new Categorie();
-            Title = "Categoriën";
+            Title = "Categorie";
         }
 
         [ObservableProperty]
@@ -43,9 +43,9 @@ namespace ITC2Wedstrijd.ViewModels
         }
 
 
-        private void RefreshCategoriën()
+        private void RefreshCategorie()
         {
-            Categoriën = new ObservableCollection<Categorie>(_categorieRepository.CategorieOphalen());
+            Categorie = new ObservableCollection<Categorie>(_categorieRepository.CategorieOphalen());
         }
 
         [RelayCommand]
@@ -55,7 +55,7 @@ namespace ITC2Wedstrijd.ViewModels
 
             if (result)
             {
-                RefreshCategoriën();
+                RefreshCategorie();
                 SelectedCategorie = new Categorie();
             }
             else
@@ -72,7 +72,7 @@ namespace ITC2Wedstrijd.ViewModels
 
             if (result)
             {
-                RefreshCategoriën();
+                RefreshCategorie();
                 SelectedCategorie = new Categorie();
             }
             else
@@ -89,7 +89,7 @@ namespace ITC2Wedstrijd.ViewModels
 
             if (result)
             {
-                RefreshCategoriën();
+                RefreshCategorie();
                 SelectedCategorie = new Categorie();
             }
             else
