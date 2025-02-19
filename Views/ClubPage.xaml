@@ -8,7 +8,7 @@
              Title="{Binding Title}">
 
     <Grid RowDefinitions="*" ColumnDefinitions="*, *">
-        <CollectionView Grid.Row="0" Grid.Column="0" SelectionMode="Single" ItemsSource="{Binding Club}" EmptyView="No items to display" SelectedItem="{Binding SelectedClub}">
+        <CollectionView Grid.Row="0" Grid.Column="0" SelectionMode="Single" ItemsSource="{Binding Clubs}" EmptyView="No items to display" SelectedItem="{Binding SelectedClub}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Club">
                     <VerticalStackLayout Padding="5">

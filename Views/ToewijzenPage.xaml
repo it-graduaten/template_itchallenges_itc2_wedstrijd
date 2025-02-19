@@ -27,8 +27,8 @@
 
         <ScrollView Grid.Row="1" Grid.Column="0" >
                 <VerticalStackLayout Padding="5" >
-                    <Label Text="Beschikbare Speler" FontSize="25"/>
-                    <CollectionView SelectionMode="Single" ItemsSource="{Binding BeschikbareSpeler}" EmptyView="No items to display">
+                    <Label Text="Beschikbare spelers" FontSize="25"/>
+                    <CollectionView SelectionMode="Single" ItemsSource="{Binding BeschikbareSpelers}" EmptyView="No items to display">
                         <CollectionView.GestureRecognizers>
                             <DropGestureRecognizer DropCommand="{Binding SpelerUitPloegHalenCommand}"/>
                         </CollectionView.GestureRecognizers> 
@@ -48,8 +48,8 @@
 
         <ScrollView Grid.Row="1" Grid.Column="1">
                   <VerticalStackLayout  Padding="5">
-                    <Label Text="Speler in de ploeg" FontSize="25"/>
-                    <CollectionView SelectionMode="Single" ItemsSource="{Binding SpelerInPloeg}" EmptyView="No items to display">
+                    <Label Text="Spelers in de ploeg" FontSize="25"/>
+                    <CollectionView SelectionMode="Single" ItemsSource="{Binding SpelersInPloeg}" EmptyView="No items to display">
                         <CollectionView.GestureRecognizers>
                             <DropGestureRecognizer DropCommand="{Binding SpelerInPloegPlaatsenCommand}" />
                         </CollectionView.GestureRecognizers>

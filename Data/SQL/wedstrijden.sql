@@ -10,17 +10,14 @@ GO
 SET NOCOUNT ON;
 GO
 
-drop table if exists SpelerPloeg;
-drop table if exists Wedstrijd;
-drop table if exists Ploeg;
-drop table if exists Categorie;
-drop table if exists Club;
-drop table if exists Sport;
-drop table if exists Speler;
-
+drop table if exists ploegen;
+drop table if exists categoriën;
+drop table if exists clubs;
+drop table if exists sporten;
+drop table if exists spelers;
 GO
 
-create table Speler (
+create table spelers (
 	id INT IDENTITY(1,1) PRIMARY KEY,
 	voornaam VARCHAR(50),
 	naam VARCHAR(50),
@@ -33,10 +30,10 @@ create table Speler (
 	geslacht VARCHAR(50)
 );
 
-SET IDENTITY_INSERT Speler ON;
+SET IDENTITY_INSERT spelers ON;
 GO
 
-insert into Speler (id, voornaam, naam, straat, huisnummer, gemeente, postcode, land, geboortedatum, geslacht) values
+insert into spelers (id, voornaam, naam, straat, huisnummer, gemeente, postcode, land, geboortedatum, geslacht) values
 (1, 'Erik', 'Maes', 'Kerkstraat', '1', 'Antwerpen', '2000', 'België', '1990-05-15', 'Man'),
 (2, 'Sophie', 'De Smet', 'Dorpsweg', '2', 'Antwerpen', '2000', 'België', '1985-08-21', 'Vrouw'),
 (3, 'Jan', 'Peeters', 'Stationsstraat', '3', 'Brussel', '1000', 'België', '1978-03-10', 'Andere'),
@@ -229,18 +226,18 @@ insert into Speler (id, voornaam, naam, straat, huisnummer, gemeente, postcode, 
 (199, 'Kobe', 'Verschueren', 'Lindenlaan', '177', 'Hoogstraten', '2320', 'België', '2015-10-17', 'Man'),
 (200, 'Luna', 'Willems', 'Esdoornlaan', '179', 'Eeklo', '9900', 'België', '2010-02-01', 'Vrouw');
 
-SET IDENTITY_INSERT Speler OFF
+SET IDENTITY_INSERT spelers OFF
 GO
 
-create table Club (
+create table clubs (
 	id INT IDENTITY(1,1) PRIMARY KEY,
 	naam VARCHAR(50),
 );
 
-SET IDENTITY_INSERT Club ON;
+SET IDENTITY_INSERT clubs ON;
 GO
 
-insert into Club (id, naam) values
+insert into clubs (id, naam) values
 (1, 'Club Brugge KV'),
 (2, 'RSC Anderlecht'),
 (3, 'Standard Luik'),
@@ -272,18 +269,18 @@ insert into Club (id, naam) values
 (29, 'KVK Tienen'),
 (30, 'ROC de Charleroi-Marchienne');
 
-SET IDENTITY_INSERT Club OFF;
+SET IDENTITY_INSERT clubs OFF;
 GO
 
-create table Sport (
+create table sporten (
 	id INT IDENTITY(1,1) PRIMARY KEY,
 	naam VARCHAR(50),
 );
 
-SET IDENTITY_INSERT Sport ON;
+SET IDENTITY_INSERT sporten ON;
 GO
 
-insert into Sport (id, naam) values
+insert into sporten (id, naam) values
 (1, 'Voetbal'),
 (2, 'Basketbal'),
 (3, 'Tennis'),
@@ -326,10 +323,10 @@ insert into Sport (id, naam) values
 (40, 'Handboogschieten');
 
 
-SET IDENTITY_INSERT Sport OFF;
+SET IDENTITY_INSERT sporten OFF;
 GO
 
-create table Categorie (
+create table categoriën (
 	id INT IDENTITY(1,1) PRIMARY KEY,
 	naam VARCHAR(50),
 	minleeftijd INT,
@@ -337,10 +334,10 @@ create table Categorie (
 	categorietype VARCHAR(50),
 );
 
-SET IDENTITY_INSERT Categorie ON;
+SET IDENTITY_INSERT categoriën ON;
 GO
 
-insert into Categorie (id, naam, minleeftijd, maxleeftijd, categorietype) values
+insert into categoriën (id, naam, minleeftijd, maxleeftijd, categorietype) values
 (1, 'Jeugdvoetbal U6', 4, 5, 'Gemengd'),
 (2, 'Jeugdvoetbal U8', 6, 7, 'Gemengd'),
 (3, 'Jeugdvoetbal U10', 8, 9, 'Gemengd'),
@@ -394,24 +391,24 @@ insert into Categorie (id, naam, minleeftijd, maxleeftijd, categorietype) values
 (51, 'Herenvolleybal', 18, 40, 'Man');
 
 
-SET IDENTITY_INSERT Categorie OFF
+SET IDENTITY_INSERT categoriën OFF
 GO
 
-create table Ploeg (
+create table ploegen (
 	id INT IDENTITY(1,1) PRIMARY KEY,
 	naam VARCHAR(50),
 	categorieid INT,
 	clubid INT,
 	sportid INT,
-	CONSTRAINT FK_PloegCategorie FOREIGN KEY (categorieid) REFERENCES Categorie(id),
-	CONSTRAINT FK_PloegClub FOREIGN KEY (clubid) REFERENCES Club(id),
-	CONSTRAINT FK_PloegSport FOREIGN KEY (sportid) REFERENCES Sport(id)
+	CONSTRAINT FK_PloegCategorie FOREIGN KEY (categorieid) REFERENCES categoriën(id),
+	CONSTRAINT FK_PloegClub FOREIGN KEY (clubid) REFERENCES clubs(id),
+	CONSTRAINT FK_PloegSport FOREIGN KEY (sportid) REFERENCES sporten(id)
 );
 
-SET IDENTITY_INSERT Ploeg ON;
+SET IDENTITY_INSERT ploegen ON;
 GO
 
-insert into Ploeg (id, naam, categorieid, clubid, sportid) values
+insert into ploegen (id, naam, categorieid, clubid, sportid) values
 (1, 'Club Brugge U16 A', 6, 1, 1),
 (2, 'Club Brugge U16 B', 6, 1, 1),
 (3, 'RSC Anderlecht U16 A', 6, 2, 1),
@@ -463,21 +460,21 @@ insert into Ploeg (id, naam, categorieid, clubid, sportid) values
 (49, 'KVRS Waasland - SK Beveren U16 A', 6, 27, 1),
 (50, 'KVRS Waasland - SK Beveren U16 B', 6, 27, 1);
 
-SET IDENTITY_INSERT Ploeg OFF;
+SET IDENTITY_INSERT ploegen OFF;
 GO
 
-create table SpelerPloeg (
+create table spelersploegen (
 	id INT IDENTITY(1,1) PRIMARY KEY,
 	spelerid INT,
 	ploegid INT,
-	CONSTRAINT FK_SpelerPloegPloeg FOREIGN KEY (ploegid) REFERENCES Ploeg(id),
-	CONSTRAINT FK_SpelerPloegSpeler FOREIGN KEY (spelerid) REFERENCES Speler(id)
+	CONSTRAINT FK_SpelersPloegenPloegen FOREIGN KEY (ploegid) REFERENCES ploegen(id),
+	CONSTRAINT FK_SpelersPloegenSpelers FOREIGN KEY (spelerid) REFERENCES spelers(id)
 );
 
-SET IDENTITY_INSERT SpelerPloeg ON;
+SET IDENTITY_INSERT spelersploegen ON;
 GO
 
-insert into SpelerPloeg (id, spelerid, ploegid) values
+insert into spelersploegen (id, spelerid, ploegid) values
 (1,115,1),
 (2,116,1),
 (3,117,1),
@@ -528,24 +525,24 @@ insert into SpelerPloeg (id, spelerid, ploegid) values
 (48,181,5),
 (49,182,5);
 
-SET IDENTITY_INSERT SpelerPloeg OFF;
+SET IDENTITY_INSERT spelersploegen OFF;
 GO
 
-create table Wedstrijd (
+create table wedstrijden (
 	id INT IDENTITY(1,1) PRIMARY KEY,
 	datum DATE,
 	ploeg1id INT,
 	ploeg2id INT,
 	uitslagploeg1 INT,
 	uitslagploeg2 INT
-	CONSTRAINT FK_WedstrijdPloeg1 FOREIGN KEY (ploeg1id) REFERENCES Ploeg(id),
-	CONSTRAINT FK_WedstrijdPloeg2 FOREIGN KEY (ploeg2id) REFERENCES Ploeg(id)
+	CONSTRAINT FK_WedstrijdPloegen1 FOREIGN KEY (ploeg1id) REFERENCES ploegen(id),
+	CONSTRAINT FK_WedstrijdPloegen2 FOREIGN KEY (ploeg2id) REFERENCES ploegen(id)
 );
 
-SET IDENTITY_INSERT Wedstrijd ON;
+SET IDENTITY_INSERT wedstrijden ON;
 GO
 
-insert into Wedstrijd (id, datum, ploeg1id, ploeg2id, uitslagploeg1, uitslagploeg2) values
+insert into wedstrijden (id, datum, ploeg1id, ploeg2id, uitslagploeg1, uitslagploeg2) values
 (1,'2024-01-10',1,3,0,2),
 (2,'2024-01-10',2,4,1,2),
 (3,'2024-01-17',1,4,2,2),
@@ -555,5 +552,5 @@ insert into Wedstrijd (id, datum, ploeg1id, ploeg2id, uitslagploeg1, uitslagploe
 (7,'2023-01-16',1,4,2,2),
 (8,'2023-01-16',2,3,4,2)
 
-SET IDENTITY_INSERT Wedstrijd OFF;
+SET IDENTITY_INSERT wedstrijden OFF;
 GO

@@ -11,17 +11,17 @@
             Spacing="25">
 
             <Label
-                Text="SportWedstrijd Management Systeem"
+                Text="Sportwedstrijden Management Systeem"
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1" />
 
             <Grid RowDefinitions="*,*" ColumnDefinitions="*,*,*" >
-                <Button Text="Wedstrijd" Grid.Row="0" Grid.Column="0" Margin="50"/>
-                <Button Text="Speler" Grid.Row="0" Grid.Column="1"  Command="{Binding GoToSpelerCommand}" Margin="50"/>
-                <Button Text="Ploeg" Grid.Row="0" Grid.Column="2"  Command="{Binding GoToPloegCommand}" Margin="50"/>
-                <Button Text="Club" Grid.Row="1" Grid.Column="0"  Command="{Binding GoToClubCommand}" Margin="50"/>
-                <Button Text="Categorie" Grid.Row="1" Grid.Column="1"  Command="{Binding GoToCategorieCommand}" Margin="50"/>
-                <Button Text="Sport" Grid.Row="1" Grid.Column="2"  Command="{Binding GoToSportCommand}" Margin="50"/>
+                <Button Text="Wedstrijden" Grid.Row="0" Grid.Column="0" Margin="50"/>
+                <Button Text="Spelers" Grid.Row="0" Grid.Column="1"  Command="{Binding GoToSpelersCommand}" Margin="50"/>
+                <Button Text="Ploegen" Grid.Row="0" Grid.Column="2"  Command="{Binding GoToPloegenCommand}" Margin="50"/>
+                <Button Text="Clubs" Grid.Row="1" Grid.Column="0"  Command="{Binding GoToClubsCommand}" Margin="50"/>
+                <Button Text="Categoriën" Grid.Row="1" Grid.Column="1"  Command="{Binding GoToCategoriënCommand}" Margin="50"/>
+                <Button Text="Sport" Grid.Row="1" Grid.Column="2"  Command="{Binding GoToSportenCommand}" Margin="50"/>
             </Grid>               
 
         </VerticalStackLayout>

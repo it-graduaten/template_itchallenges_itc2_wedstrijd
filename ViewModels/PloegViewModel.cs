@@ -3,16 +3,16 @@
     public partial class PloegViewModel : BaseViewModel
     {
         [ObservableProperty]
-        public ObservableCollection<Ploeg> Ploeg;
+        public ObservableCollection<Ploeg> ploegen;
 
         [ObservableProperty]
-        public ObservableCollection<Sport> Sport;
+        public ObservableCollection<Sport> sporten;
 
         [ObservableProperty]
-        public ObservableCollection<Club> Club;
+        public ObservableCollection<Club> clubs;
 
         [ObservableProperty]
-        public ObservableCollection<Categorie> Categorie;
+        public ObservableCollection<Categorie> categoriën;
 
         [ObservableProperty]
         public Ploeg selectedPloeg;
@@ -31,13 +31,13 @@
             _clubRepository = clubRepository;
             _sportRepository = sportRepository;
             _categorieRepository = categorieRepository;
-            RefreshPloeg();
-            Club = new ObservableCollection<Club>(_clubRepository.ClubOphalen());
-            Sport = new ObservableCollection<Sport>(_sportRepository.SportOphalen());
-            Categorie = new ObservableCollection<Categorie>(_categorieRepository.CategorieOphalen());
+            RefreshPloegen();
+            Clubs = new ObservableCollection<Club>(_clubRepository.ClubOphalen());
+            Sporten = new ObservableCollection<Sport>(_sportRepository.SportOphalen());
+            Categoriën = new ObservableCollection<Categorie>(_categorieRepository.CategorieOphalen());
 
             SelectedPloeg = new Ploeg();
-            Title = "Ploeg";
+            Title = "Ploegen";
         }
 
         [RelayCommand]
@@ -47,7 +47,7 @@
 
             if (result)
             {
-                RefreshPloeg();
+                RefreshPloegen();
                 SelectedPloeg = new Ploeg();
             }
             else
@@ -63,7 +63,7 @@
 
             if (result)
             {
-                RefreshPloeg();
+                RefreshPloegen();
                 SelectedPloeg = new Ploeg();
             }
             else
@@ -79,7 +79,7 @@
 
             if (result)
             {
-                RefreshPloeg();
+                RefreshPloegen();
                 SelectedPloeg = new Ploeg();
             }
             else
@@ -124,9 +124,9 @@
             }
         }
 
-        private void RefreshPloeg()
+        private void RefreshPloegen()
         {
-            Ploeg = new ObservableCollection<Ploeg>(_ploegRepository.PloegOphalen());
+            Ploegen = new ObservableCollection<Ploeg>(_ploegRepository.PloegOphalen());
         }
     }
 }

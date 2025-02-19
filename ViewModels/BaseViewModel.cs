@@ -19,27 +19,27 @@ namespace ITC2Wedstrijd.ViewModels
             await Shell.Current.GoToAsync("..");
         }
         [RelayCommand]
-        public static async Task GoToClubAsync()
+        public static async Task GoToClubsAsync()
         {
             await Shell.Current.GoToAsync(nameof(ClubPage));
         }
         [RelayCommand]
-        public static async Task GoToCategorieAsync()
+        public static async Task GoToCategoriënAsync()
         {
             await Shell.Current.GoToAsync(nameof(CategoriePage));
         }
         [RelayCommand]
-        public static async Task GoToSportAsync()
+        public static async Task GoToSportenAsync()
         {
             await Shell.Current.GoToAsync(nameof(SportPage));
         }
         [RelayCommand]
-        public static async Task GoToSpelerAsync()
+        public static async Task GoToSpelersAsync()
         {
             await Shell.Current.GoToAsync(nameof(SpelerPage));
         }
         [RelayCommand]
-        public static async Task GoToPloegAsync()
+        public static async Task GoToPloegenAsync()
         {
             await Shell.Current.GoToAsync(nameof(PloegPage));
         }

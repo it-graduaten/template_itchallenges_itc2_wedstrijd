@@ -5,18 +5,18 @@ namespace ITC2Wedstrijd.Data
     {
         public IEnumerable<Speler> SpelerOphalen()
         {
-            string sql = @"SELECT * FROM Speler Order by naam, voornaam";
+            string sql = @"SELECT * FROM Spelers Order by naam, voornaam";
 
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {
-                var Speler = db.Query<Speler>(sql).ToList();
-                return Speler;
+                var spelers = db.Query<Speler>(sql).ToList();
+                return spelers;
             }
         }
 
         public bool ToevoegenSpeler(Speler speler)
         {
-                string sql = @"INSERT INTO Speler (voornaam, naam, straat, huisnummer, gemeente, postcode, land, geboortedatum, geslacht)
+                string sql = @"INSERT INTO spelers (voornaam, naam, straat, huisnummer, gemeente, postcode, land, geboortedatum, geslacht)
                       VALUES (@voornaam, @naam, @straat, @huisnummer, @gemeente, @postcode, @land, @geboortedatum, @geslacht)";
 
                 var parameters = new
@@ -40,8 +40,8 @@ namespace ITC2Wedstrijd.Data
 
         public bool VerwijderenSpeler(int id)
         {
-                string sql = @"DELETE FROM SpelerPloeg WHERE spelerid = @id;
-                                DELETE FROM Speler WHERE id = @id";
+                string sql = @"DELETE FROM spelersploegen WHERE spelerid = @id;
+                                DELETE FROM spelers WHERE id = @id";
 
                  using IDbConnection db = new SqlConnection(ConnectionString);
                  var affectedRows = db.Execute(sql, new { id });
@@ -51,7 +51,7 @@ namespace ITC2Wedstrijd.Data
 
         public bool WijzigenSpeler(Speler speler)
         {
-            string sql = @"UPDATE Speler
+            string sql = @"UPDATE Spelers
                         SET voornaam = @voornaam,
                             naam = @Naam,
                             straat = @straat,

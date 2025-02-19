@@ -8,7 +8,7 @@
              Title="{Binding Title}">
 
     <Grid RowDefinitions="*" ColumnDefinitions="*, *">
-        <CollectionView Grid.Row="0" Grid.Column="0" SelectionMode="Single" ItemsSource="{Binding Ploeg}" EmptyView="No items to display" SelectedItem="{Binding SelectedPloeg}">
+        <CollectionView Grid.Row="0" Grid.Column="0" SelectionMode="Single" ItemsSource="{Binding Ploegen}" EmptyView="No items to display" SelectedItem="{Binding SelectedPloeg}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Ploeg">
                     <VerticalStackLayout Padding="5">
@@ -27,11 +27,11 @@
             <Entry Placeholder="Naam" Text="{Binding SelectedPloeg.Naam}" />
             <Label Text="Kies een categorie" />
             <Label Text="{Binding SelectedPloeg.Categorie.Naam}"/>
-            <Picker x:Name="PickerCategorie" ItemsSource="{Binding Categorie}" SelectedItem="{Binding SelectedPloeg.Categorie, Mode=TwoWay}"  ItemDisplayBinding="{Binding Naam}"/>
+            <Picker x:Name="PickerCategoriën" ItemsSource="{Binding Categoriën}" SelectedItem="{Binding SelectedPloeg.Categorie, Mode=TwoWay}"  ItemDisplayBinding="{Binding Naam}"/>
             <Label Text="Kies een club" />
-            <Picker ItemsSource="{Binding Club}" SelectedItem="{Binding SelectedPloeg.Club}"  ItemDisplayBinding="{Binding Naam}" />
+            <Picker ItemsSource="{Binding Clubs}" SelectedItem="{Binding SelectedPloeg.Club}"  ItemDisplayBinding="{Binding Naam}" />
             <Label Text="Kies een sport" />
-            <Picker ItemsSource="{Binding Sport}" SelectedItem="{Binding SelectedPloeg.Sport}"  ItemDisplayBinding="{Binding Naam}" />
+            <Picker ItemsSource="{Binding Sporten}" SelectedItem="{Binding SelectedPloeg.Sport}"  ItemDisplayBinding="{Binding Naam}" />
 
             <HorizontalStackLayout Spacing="10">
                 <Button Text="Toevoegen" Command="{Binding ToevoegenCommand}"/>
@@ -39,7 +39,7 @@
                 <Button Text="Verwijderen" Command="{Binding VerwijderenCommand}"/>
                 <Button Text="Deselecteren" Command="{Binding DeselecterenCommand}"/>
             </HorizontalStackLayout>
-            <Button Text="Speler toewijzen" Command="{Binding GoToToewijzenCommand}"/>
+            <Button Text="Spelers toewijzen" Command="{Binding GoToToewijzenCommand}"/>
         </VerticalStackLayout>
 
 

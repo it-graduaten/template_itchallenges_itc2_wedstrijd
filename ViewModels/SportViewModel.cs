@@ -4,7 +4,7 @@ namespace ITC2Wedstrijd.ViewModels
     public partial class SportViewModel : BaseViewModel
     {
         [ObservableProperty]
-        public ObservableCollection<Sport> Sport;
+        public ObservableCollection<Sport> sporten;
 
         private ISportRepository _sportRepository;
 
@@ -13,9 +13,9 @@ namespace ITC2Wedstrijd.ViewModels
         public SportViewModel(SportRepository sportRepository)
         {
             _sportRepository = sportRepository;
-            RefreshSport();
+            RefreshSporten();
             SelectedSport = new Sport();
-            Title = "Sport";
+            Title = "Sporten";
         }
 
         [ObservableProperty]
@@ -34,9 +34,9 @@ namespace ITC2Wedstrijd.ViewModels
         }
 
 
-        private void RefreshSport()
+        private void RefreshSporten()
         {
-            Sport = new ObservableCollection<Sport>(_sportRepository.SportOphalen());
+            Sporten = new ObservableCollection<Sport>(_sportRepository.SportOphalen());
         }
 
         [RelayCommand]
@@ -46,7 +46,7 @@ namespace ITC2Wedstrijd.ViewModels
 
             if (result)
             {
-                RefreshSport();
+                RefreshSporten();
                 SelectedSport = new Sport();
             }
             else
@@ -63,7 +63,7 @@ namespace ITC2Wedstrijd.ViewModels
 
             if (result)
             {
-                RefreshSport();
+                RefreshSporten();
                 SelectedSport = new Sport();
             }
             else
@@ -80,7 +80,7 @@ namespace ITC2Wedstrijd.ViewModels
 
             if (result)
             {
-                RefreshSport();
+                RefreshSporten();
                 SelectedSport = new Sport();
             }
             else

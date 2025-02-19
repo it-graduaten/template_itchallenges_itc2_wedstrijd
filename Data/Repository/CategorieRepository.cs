@@ -6,19 +6,19 @@ namespace ITC2Wedstrijd.Data
     {
         public IEnumerable<Categorie> CategorieOphalen()
         {
-            string sql = @"SELECT * FROM Categorie Order By naam";
+            string sql = @"SELECT * FROM categoriën Order By naam";
 
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {
-                var Categorie = db.Query<Categorie>(sql).ToList();
-                return Categorie;
+                var categoriën = db.Query<Categorie>(sql).ToList();
+                return categoriën;
             }
         }
 
 
         public bool ToevoegenCategorie(Categorie categorie)
         {
-               string sql = @"INSERT INTO Categorie (naam, minleeftijd, maxleeftijd, categorietype)
+               string sql = @"INSERT INTO categoriën (naam, minleeftijd, maxleeftijd, categorietype)
                   VALUES (@naam, @minleeftijd, @maxleeftijd, @categorietype)";
 
                var parameters = new
@@ -37,7 +37,7 @@ namespace ITC2Wedstrijd.Data
 
         public bool VerwijderenCategorie(int id)
         {
-                string sql = @"DELETE FROM Categorie WHERE Id = @id";
+                string sql = @"DELETE FROM categoriën WHERE Id = @id";
 
                  using IDbConnection db = new SqlConnection(ConnectionString);
                  var affectedRows = db.Execute(sql, new { id });
@@ -48,7 +48,7 @@ namespace ITC2Wedstrijd.Data
 
         public bool WijzigenCategorie(Categorie categorie)
         {
-               string sql = @"UPDATE Categorie
+               string sql = @"UPDATE categoriën
                               SET naam = @Naam,
                                   minleeftijd = @minleeftijd,
                                   maxleeftijd = @maxleeftijd,

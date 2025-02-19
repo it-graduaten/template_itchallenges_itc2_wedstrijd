@@ -8,7 +8,7 @@
              Title="{Binding Title}">
 
     <Grid RowDefinitions="*" ColumnDefinitions="*, *">
-        <CollectionView Grid.Row="0" Grid.Column="0" SelectionMode="Single" ItemsSource="{Binding Speler}" EmptyView="No items to display" SelectedItem="{Binding SelectedSpeler}">
+        <CollectionView Grid.Row="0" Grid.Column="0" SelectionMode="Single" ItemsSource="{Binding Spelers}" EmptyView="No items to display" SelectedItem="{Binding SelectedSpeler}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Speler">
                     <VerticalStackLayout Padding="5">
